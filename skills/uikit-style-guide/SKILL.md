@@ -2,9 +2,10 @@
 name: uikit-style-guide
 description: >
   Review or write UIKit Swift code using an opinionated organization and naming
-  style for UIViewController, UIView, custom controls, MARK ordering, setupUI,
-  binding, render/update, didSet boundaries, private names, outlets, actions,
-  selectors, and protocol-conformance extensions. Do not use for SwiftUI.
+  style for UIViewController, UIView, cells, custom controls, MARK ordering,
+  setupUI, binding, render/update, didSet boundaries, main-actor safety,
+  private names, outlets, actions, selectors, and protocol-conformance
+  extensions. Do not use for SwiftUI.
 ---
 
 # UIKit Style Guide
@@ -25,20 +26,52 @@ When reviewing UIKit code:
 
 - Prioritize correctness and readability over mechanical style.
 - Report in this order: lifecycle/threading correctness → topology/MARK →
-  setup/render/didSet boundaries → naming/access control → formatting.
+  setup/render/didSet boundaries → cell reuse → naming/access control →
+  formatting.
 - Use severity labels: `Must fix`, `Should fix`, `Optional`.
 - Prefer concrete rewrites over abstract comments.
 - Do not flag harmless deviations.
 - If local project conventions conflict, prefer consistency within the touched
   file or module.
 
+## Writing Behavior
+
+When writing UIKit code:
+
+- Prefer the smallest change that fits the touched file's existing conventions.
+- Default new view controllers, views, cells, and custom controls to `final`.
+- For programmatic view controllers, prefer dependency injection through `init`
+  and mark unsupported storyboard initialization unavailable.
+- Start state-driven view controllers with `viewDidLoad()` calling `setupUI()`,
+  `bind()`, then `render(_:)` or `update(with:)`.
+- Put UIKit structure in setup, state forwarding in render/update, and event
+  entry points under actions.
+- Use explicit methods for workflows; do not hide workflow steps in `didSet`.
+- Preserve local project architecture for navigation, view models, coordinators,
+  and dependency injection.
+
 ## Non-Goals
 
 - Do not rewrite working code only for taste.
+- Do not reorganize untouched large files only to match this topology.
 - Do not extract solely because a file is long; name the responsibility to move.
 - Do not create MARK sections for tiny groups without navigational value.
+- Do not require every canonical section in a tiny file.
+- Do not create helper abstractions solely to hide normal UIKit boilerplate.
 - Do not move workflows into `didSet`.
 - Do not apply this guide to SwiftUI.
+
+## Pragmatic Boundaries
+
+- Local conventions win when they are clear and consistent in the file/module.
+- For narrow edits, prefer improving the touched area over reordering the whole
+  file.
+- Treat correctness and lifecycle bugs as `Must fix`; treat pure style as
+  `Should fix` or `Optional`.
+- Suggest file topology changes when they reduce real navigation or maintenance
+  cost, not just to satisfy the canonical order.
+- When a project mixes storyboard/nib and programmatic UIKit, follow the file's
+  current construction model.
 
 ## File Topology
 
@@ -207,6 +240,39 @@ required init?(coder: NSCoder) {
   configuration.
 - Do not add subviews, activate constraints, install actions, start async work,
   navigate, log analytics, or persist data from render.
+
+## Cell and Reuse Rules
+
+- Keep `UITableViewCell` and `UICollectionViewCell` configuration idempotent;
+  `configure(with:)`, `render(_:)`, and `update(with:)` must be safe to call
+  repeatedly.
+- Cells should receive value/display models and emit user intent; they should
+  not own navigation, persistence, analytics workflows, or feature decisions.
+- Keep subview creation, constraints, gestures, and target-actions in setup,
+  not in repeated configuration calls.
+- Use `prepareForReuse()` to cancel cell-owned async work and clear transient
+  display state; do not rebuild static view hierarchy there.
+- Guard async image/data completions against reuse with cancellation or a stable
+  model identity check before rendering.
+- Put table/collection delegate and data-source conformances in extensions after
+  the primary type unless local convention keeps tiny conformances inline.
+- Configure compositional layouts and diffable data sources in setup/binding;
+  apply snapshots from render/update or a named state transition method.
+
+## Threading and Task Rules
+
+- Mutate UIKit only on the main thread / main actor.
+- Prefer `@MainActor` on UIKit-owning types or UI-driving methods when async
+  callbacks can cross actor boundaries.
+- In bindings and callbacks, hop to the main actor before calling render/update;
+  avoid nested main-queue dispatch when already main-actor isolated.
+- Store long-lived `Task` handles and cancel them in `deinit`,
+  `viewDidDisappear(_:)`, or `prepareForReuse()` when the work is tied to a
+  view, screen, or reusable cell lifetime.
+- Do not start unstructured async work from render/update or view property
+  initialization.
+- Prevent stale async completions from rendering older state over newer state;
+  compare state IDs, generation tokens, or cancel previous work.
 
 ## didSet Rules
 
