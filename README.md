@@ -7,16 +7,23 @@ Personal [Claude Code](https://claude.com/claude-code) / agent skills by
 
 | Skill | Scope | Status |
 | --- | --- | --- |
-| [`uikit-style-guide`](./uikit-style-guide/SKILL.md) | Opinionated UIKit + Swift code-style conventions (MARK, setup, didSet, naming) | ✅ available |
+| [`uikit-style-guide`](./skills/uikit-style-guide/SKILL.md) | Opinionated UIKit + Swift code-style conventions (MARK, setup, didSet, naming) | ✅ available |
 | `swiftui-style` | SwiftUI view decomposition, property wrappers, modifier ordering | 🚧 planned |
 
-## Install (global)
+## Install
 
-Each skill is a directory containing a `SKILL.md`. Symlink the ones you want
-into your global skills directory so they stay in sync with this repo:
+Skills live under `skills/<name>/SKILL.md` so the `skills` CLI can discover
+them from GitHub:
 
 ```sh
-ln -s "$(pwd)/uikit-style-guide" ~/.claude/skills/uikit-style-guide
+npx skills add Weixi779/skills
+```
+
+For local development, symlink the skill directory so it stays in sync with this
+repo:
+
+```sh
+ln -s "$(pwd)/skills/uikit-style-guide" ~/.claude/skills/uikit-style-guide
 ```
 
 Verify it loaded by listing skills in Claude Code, or just start writing UIKit
