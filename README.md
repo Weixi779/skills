@@ -1,7 +1,29 @@
 # skills
 
-Personal [Claude Code](https://claude.com/claude-code) / agent skills by
-[@Weixi779](https://github.com/Weixi779), focused on iOS / Swift.
+[![skills.sh](https://skills.sh/b/Weixi779/skills)](https://skills.sh/Weixi779/skills)
+
+Agent skills for iOS and Swift development.
+
+## Install
+
+Install from GitHub with the `skills` CLI:
+
+```sh
+npx skills add Weixi779/skills
+```
+
+List available skills without installing:
+
+```sh
+npx skills add Weixi779/skills --list
+```
+
+Install a specific skill globally for an agent:
+
+```sh
+npx skills add Weixi779/skills --skill uikit-style-guide -g -a claude-code
+npx skills add Weixi779/skills --skill uikit-style-guide -g -a codex
+```
 
 ## Skills
 
@@ -10,24 +32,25 @@ Personal [Claude Code](https://claude.com/claude-code) / agent skills by
 | [`uikit-style-guide`](./skills/uikit-style-guide/SKILL.md) | Opinionated UIKit + Swift code-style conventions (MARK, setup, didSet, naming) | ✅ available |
 | `swiftui-style` | SwiftUI view decomposition, property wrappers, modifier ordering | 🚧 planned |
 
-## Install
+## Development
 
-Skills live under `skills/<name>/SKILL.md` so the `skills` CLI can discover
-them from GitHub:
+This repository uses the standard `skills` CLI layout:
 
-```sh
-npx skills add Weixi779/skills
+```text
+skills/
+└── <name>/
+    └── SKILL.md
 ```
 
-For local development, symlink the skill directory so it stays in sync with this
-repo:
+For local development, symlink a skill directory so edits stay in sync:
 
 ```sh
 ln -s "$(pwd)/skills/uikit-style-guide" ~/.claude/skills/uikit-style-guide
+ln -s "$(pwd)/skills/uikit-style-guide" ~/.codex/skills/uikit-style-guide
 ```
 
-Verify it loaded by listing skills in Claude Code, or just start writing UIKit
-code and let it trigger.
+The CLI can discover this repository because each skill is stored at
+`skills/<name>/SKILL.md`.
 
 ## Sources
 
