@@ -2,7 +2,7 @@
 
 [![skills.sh](https://skills.sh/b/Weixi779/skills)](https://skills.sh/Weixi779/skills)
 
-Agent skills for iOS and Swift development.
+Personal agent skills for development workflows, iOS, and Swift.
 
 ## Install
 
@@ -23,12 +23,14 @@ Install a specific skill globally for an agent:
 ```sh
 npx skills add Weixi779/skills --skill uikit-style-guide -g -a claude-code
 npx skills add Weixi779/skills --skill uikit-style-guide -g -a codex
+npx skills add Weixi779/skills --skill create-pull-request -g -a codex
 ```
 
 ## Skills
 
 | Skill | Scope | Status |
 | --- | --- | --- |
+| [`create-pull-request`](./skills/create-pull-request/SKILL.md) | Safely publish scoped changes as an assigned draft GitHub PR | ✅ available |
 | [`uikit-style-guide`](./skills/uikit-style-guide/SKILL.md) | Opinionated UIKit + Swift code-style conventions (MARK, setup, didSet, naming) | ✅ available |
 | `swiftui-style` | SwiftUI view decomposition, property wrappers, modifier ordering | 🚧 planned |
 
