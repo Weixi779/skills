@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shape Commits"
+  short_description: "Create intentional, atomic commits on explicit request"
+  default_prompt: "Use $shape-commits to group and commit my current task-related changes."
