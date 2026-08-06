@@ -1,0 +1,4 @@
+interface:
+  display_name: "Using CodeGraph"
+  short_description: "Navigate indexed code structure with CodeGraph"
+  default_prompt: "Use $using-codegraph to trace this code path with the available CodeGraph tools."
