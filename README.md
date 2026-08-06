@@ -2,7 +2,13 @@
 
 [![skills.sh](https://skills.sh/b/Weixi779/skills)](https://skills.sh/Weixi779/skills)
 
-Personal agent skills for development workflows, iOS, and Swift.
+Personal agent skills for architecture, code navigation, development workflows,
+iOS, and Swift.
+
+This repository owns portable workflows and their trigger boundaries. Project
+facts stay in their project repositories; Weixi's personal engineering judgment
+and evidence live in [Petrichor](https://github.com/Weixi779/Petrichor), which an
+environment may provide as Memory but no skill requires.
 
 ## Install
 
