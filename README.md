@@ -23,6 +23,7 @@ Install a specific skill globally for an agent:
 ```sh
 npx skills add Weixi779/skills --skill uikit-style-guide -g -a claude-code
 npx skills add Weixi779/skills --skill uikit-style-guide -g -a codex
+npx skills add Weixi779/skills --skill does-it-still-make-sense -g -a codex
 npx skills add Weixi779/skills --skill shape-commits -g -a codex
 npx skills add Weixi779/skills --skill create-pull-request -g -a codex
 npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
@@ -36,6 +37,7 @@ npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
 | [`create-pull-request`](./skills/create-pull-request/SKILL.md) | Safely publish scoped changes as an assigned draft GitHub PR | ✅ available |
 | [`maintain-pull-request`](./skills/maintain-pull-request/SKILL.md) | Inspect and safely maintain existing GitHub PRs | ✅ available |
 | [`uikit-style-guide`](./skills/uikit-style-guide/SKILL.md) | Opinionated UIKit + Swift code-style conventions (MARK, setup, didSet, naming) | ✅ available |
+| [`does-it-still-make-sense`](./skills/does-it-still-make-sense/SKILL.md) | Decide whether an evolving codebase still has coherent architecture | ✅ available |
 | `swiftui-style` | SwiftUI view decomposition, property wrappers, modifier ordering | 🚧 planned |
 
 ## Development

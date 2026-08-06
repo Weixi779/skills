@@ -1,0 +1,6 @@
+interface:
+  display_name: "Does It Still Make Sense?"
+  short_description: "Assess whether the codebase still explains itself"
+  default_prompt: "Use $does-it-still-make-sense to assess whether this codebase still makes sense."
+policy:
+  allow_implicit_invocation: false
