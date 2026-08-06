@@ -1,0 +1,6 @@
+interface:
+  display_name: "Shape the Change"
+  short_description: "Turn an accepted boundary into a coherent change"
+  default_prompt: "Use $shape-the-change to shape this accepted boundary into an actionable change."
+policy:
+  allow_implicit_invocation: true

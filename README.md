@@ -25,6 +25,8 @@ npx skills add Weixi779/skills --skill uikit-style-guide -g -a claude-code
 npx skills add Weixi779/skills --skill uikit-style-guide -g -a codex
 npx skills add Weixi779/skills --skill does-it-still-make-sense -g -a codex
 npx skills add Weixi779/skills --skill using-codegraph -g -a codex
+npx skills add Weixi779/skills --skill argue-the-boundary -g -a codex
+npx skills add Weixi779/skills --skill shape-the-change -g -a codex
 npx skills add Weixi779/skills --skill shape-commits -g -a codex
 npx skills add Weixi779/skills --skill create-pull-request -g -a codex
 npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
@@ -40,6 +42,8 @@ npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
 | [`uikit-style-guide`](./skills/uikit-style-guide/SKILL.md) | Opinionated UIKit + Swift code-style conventions (MARK, setup, didSet, naming) | ✅ available |
 | [`does-it-still-make-sense`](./skills/does-it-still-make-sense/SKILL.md) | Decide whether an evolving codebase still has coherent architecture | ✅ available |
 | [`using-codegraph`](./skills/using-codegraph/SKILL.md) | Route structural code exploration through the configured CodeGraph MCP server | ✅ available |
+| [`argue-the-boundary`](./skills/argue-the-boundary/SKILL.md) | Pressure-test requirements, scope, and ownership before planning | ✅ available |
+| [`shape-the-change`](./skills/shape-the-change/SKILL.md) | Shape an accepted boundary into a coherent implementation direction | ✅ available |
 | `swiftui-style` | SwiftUI view decomposition, property wrappers, modifier ordering | 🚧 planned |
 
 ## Development

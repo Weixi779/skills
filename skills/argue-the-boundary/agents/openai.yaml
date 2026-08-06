@@ -1,0 +1,6 @@
+interface:
+  display_name: "Argue the Boundary"
+  short_description: "Pressure-test scope and ownership before planning"
+  default_prompt: "Use $argue-the-boundary to pressure-test this proposal before planning it."
+policy:
+  allow_implicit_invocation: true
