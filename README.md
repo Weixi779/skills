@@ -27,8 +27,7 @@ npx skills add Weixi779/skills --list
 Install a specific skill globally for an agent:
 
 ```sh
-npx skills add Weixi779/skills --skill uikit-style-guide -g -a claude-code
-npx skills add Weixi779/skills --skill uikit-style-guide -g -a codex
+npx skills add Weixi779/skills --skill uikit-style-principles -g -a codex
 npx skills add Weixi779/skills --skill does-it-still-make-sense -g -a codex
 npx skills add Weixi779/skills --skill using-codegraph -g -a codex
 npx skills add Weixi779/skills --skill argue-the-boundary -g -a codex
@@ -45,7 +44,7 @@ npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
 | [`shape-commits`](./skills/shape-commits/SKILL.md) | Shape task-related changes into intentional atomic commits | ✅ available |
 | [`create-pull-request`](./skills/create-pull-request/SKILL.md) | Safely publish scoped changes as an assigned draft GitHub PR | ✅ available |
 | [`maintain-pull-request`](./skills/maintain-pull-request/SKILL.md) | Inspect and safely maintain existing GitHub PRs | ✅ available |
-| [`uikit-style-guide`](./skills/uikit-style-guide/SKILL.md) | Opinionated UIKit + Swift code-style conventions (MARK, setup, didSet, naming) | ✅ available |
+| [`uikit-style-principles`](./skills/uikit-style-principles/SKILL.md) | Apply focused UIKit style-change guardrails without imposing a template | ✅ available |
 | [`does-it-still-make-sense`](./skills/does-it-still-make-sense/SKILL.md) | Decide whether an evolving codebase still has coherent architecture | ✅ available |
 | [`using-codegraph`](./skills/using-codegraph/SKILL.md) | Route structural code exploration through the configured CodeGraph MCP server | ✅ available |
 | [`argue-the-boundary`](./skills/argue-the-boundary/SKILL.md) | Pressure-test requirements, scope, and ownership before planning | ✅ available |
@@ -62,32 +61,8 @@ skills/
     └── SKILL.md
 ```
 
-For local development, symlink a skill directory so edits stay in sync:
-
-```sh
-ln -s "$(pwd)/skills/uikit-style-guide" ~/.claude/skills/uikit-style-guide
-ln -s "$(pwd)/skills/uikit-style-guide" ~/.codex/skills/uikit-style-guide
-```
-
 The CLI can discover this repository because each skill is stored at
 `skills/<name>/SKILL.md`.
-
-## Sources
-
-`uikit-style-guide` is informed by patterns observed in large production
-UIKit/Swift codebases — heavy named `MARK` usage, explicit `setupUI`
-orchestration phases, and disciplined `didSet` boundaries — plus the official
-Swift naming baseline (clarity over brevity). Corpus pinned for provenance:
-
-| Repo | Commit |
-| --- | --- |
-| signalapp/Signal-iOS | `e275cdb1b1c6014fc02c64ac4e53746bd13d9947` |
-| mozilla-mobile/firefox-ios | `88cb5aa426b00bc1cba95303f80cf8f2084c7207` |
-| Dimillian/IceCubesApp | `9c05a720597b3ff13de2e241bf58d3fba0863c09` |
-| TelegramMessenger/Telegram-iOS | `6e370e06d147b091b07903071cb1b8a22152492d` |
-
-References: [Swift API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/)
-· [Airbnb Swift Style Guide](https://swift.airbnb.tech/)
 
 ## License
 
