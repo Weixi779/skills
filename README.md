@@ -28,6 +28,7 @@ Install a specific skill globally for an agent:
 
 ```sh
 npx skills add Weixi779/skills --skill uikit-style-principles -g -a codex
+npx skills add Weixi779/skills --skill swift-readability -g -a codex
 npx skills add Weixi779/skills --skill does-it-still-make-sense -g -a codex
 npx skills add Weixi779/skills --skill using-codegraph -g -a codex
 npx skills add Weixi779/skills --skill argue-the-boundary -g -a codex
@@ -45,6 +46,7 @@ npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
 | [`create-pull-request`](./skills/create-pull-request/SKILL.md) | Safely publish scoped changes as an assigned draft GitHub PR | ✅ available |
 | [`maintain-pull-request`](./skills/maintain-pull-request/SKILL.md) | Inspect and safely maintain existing GitHub PRs | ✅ available |
 | [`uikit-style-principles`](./skills/uikit-style-principles/SKILL.md) | Apply focused UIKit style-change guardrails without imposing a template | ✅ available |
+| [`swift-readability`](./skills/swift-readability/SKILL.md) | Improve Swift reading flow with meaningful model operations and shallow functions | ✅ available |
 | [`does-it-still-make-sense`](./skills/does-it-still-make-sense/SKILL.md) | Decide whether an evolving codebase still has coherent architecture | ✅ available |
 | [`using-codegraph`](./skills/using-codegraph/SKILL.md) | Route structural code exploration through the configured CodeGraph MCP server | ✅ available |
 | [`argue-the-boundary`](./skills/argue-the-boundary/SKILL.md) | Pressure-test requirements, scope, and ownership before planning | ✅ available |

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swift Readability"
+  short_description: "Clear Swift flows with behavior beside state"
+  default_prompt: "Use $swift-readability to improve this Swift code with meaningful model operations and clear, shallow functions."
