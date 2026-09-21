@@ -1,0 +1,4 @@
+interface:
+  display_name: "UIKit 视图整理"
+  short_description: "按 lazy var + then、视图置底的个人习惯整理 UIKit"
+  default_prompt: "用 $uikit-view-style 整理这些 UIKit 视图，按我的习惯组织属性和布局，并检查已有组件。"
