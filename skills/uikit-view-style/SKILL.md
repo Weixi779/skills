@@ -28,6 +28,7 @@ description: 按用户确认的 lazy var + then、子视图置于类末尾、set
 ### 组装、数据更新和交互各有位置
 
 - 普通 View / Cell / Header 的初始化调用 `setupUI()`；其中保留子视图组装和 SnapKit 约束。小类型一个方法就够，不机械拆成多层 setup 方法。
+- 当 `addSubview` / `addArrangedSubview` 和 `snp.makeConstraints` 较多、混在一起影响阅读时，拆成 `setupViewHierarchy()` 和 `setupConstraints()`：前者集中添加子视图，后者集中安装约束，由 `setupUI()` 依次调用。名称可沿用项目惯例，不设机械的数量门槛；保留视图添加顺序，并确保安装约束前相关视图已进入正确层级。
 - ViewController 的组装仍留在原有生命周期阶段，不为统一形式搬进 `init`。
 - 固定样式从初始化中的逐项赋值收进对应属性的 `.then`；随模型、主题、trait、尺寸变化的配置仍留在原来的更新路径。
 - `configure` 保留数据驱动的内容和状态，例如标题高亮、隐藏条件、订阅/购买文案、加载状态和按钮可用性。不要把这些误当成固定样式搬到初始化。
