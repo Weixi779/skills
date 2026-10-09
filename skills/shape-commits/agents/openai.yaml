@@ -1,4 +1,4 @@
 interface:
   display_name: "Shape Commits"
-  short_description: "Create intentional, atomic commits on explicit request"
-  default_prompt: "Use $shape-commits to group and commit my current task-related changes."
+  short_description: "Shape Git commits and jj splits while preserving WIP"
+  default_prompt: "Use $shape-commits to organize my task-related changes with this repository's Git or jj workflow, preserving unrelated WIP."
