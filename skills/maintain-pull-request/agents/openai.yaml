@@ -1,4 +1,4 @@
 interface:
   display_name: "Maintain Pull Request"
-  short_description: "Review and safely maintain existing GitHub PRs"
+  short_description: "Maintain Git or jj PRs without disturbing other WIP"
   default_prompt: "Use $maintain-pull-request to inspect and handle the requested work on my existing pull request."

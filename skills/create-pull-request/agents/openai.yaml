@@ -1,4 +1,4 @@
 interface:
   display_name: "Create Pull Request"
-  short_description: "Safely publish changes as a draft GitHub PR"
+  short_description: "Publish scoped Git or jj changes as a draft PR"
   default_prompt: "Use $create-pull-request to publish my current changes as a draft pull request to the base branch I specify."

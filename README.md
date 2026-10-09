@@ -44,8 +44,8 @@ npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
 | Skill | Scope | Status |
 | --- | --- | --- |
 | [`shape-commits`](./skills/shape-commits/SKILL.md) | Shape task-related changes into Git commits or jj changes while preserving WIP | ✅ available |
-| [`create-pull-request`](./skills/create-pull-request/SKILL.md) | Safely publish scoped changes as an assigned draft GitHub PR | ✅ available |
-| [`maintain-pull-request`](./skills/maintain-pull-request/SKILL.md) | Inspect and safely maintain existing GitHub PRs | ✅ available |
+| [`create-pull-request`](./skills/create-pull-request/SKILL.md) | Publish scoped Git or jj changes as an assigned draft GitHub PR | ✅ available |
+| [`maintain-pull-request`](./skills/maintain-pull-request/SKILL.md) | Maintain existing GitHub PRs with Git or jj while preserving WIP | ✅ available |
 | [`uikit-style-principles`](./skills/uikit-style-principles/SKILL.md) | Apply focused UIKit style-change guardrails without imposing a template | ✅ available |
 | [`uikit-view-style`](./skills/uikit-view-style/SKILL.md) | Apply Weixi's UIKit layout preferences: lazy var + then, view properties last, and setupUI assembly | ✅ available |
 | [`swift-readability`](./skills/swift-readability/SKILL.md) | Improve Swift reading flow with meaningful model operations and shallow functions | ✅ available |
