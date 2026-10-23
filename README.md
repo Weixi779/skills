@@ -53,7 +53,7 @@ npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
 | [`using-codegraph`](./skills/using-codegraph/SKILL.md) | Route structural code exploration through the configured CodeGraph MCP server | ✅ available |
 | [`argue-the-boundary`](./skills/argue-the-boundary/SKILL.md) | Pressure-test requirements, scope, and ownership before planning | ✅ available |
 | [`shape-the-change`](./skills/shape-the-change/SKILL.md) | Shape an accepted boundary into a coherent implementation direction | ✅ available |
-| `swiftui-style` | SwiftUI view decomposition, property wrappers, modifier ordering | 🚧 planned |
+| [`swiftui-style`](./skills/swiftui-style/SKILL.md) | Apply Weixi's SwiftUI preferences: scoped child views, direct rendering, and coherent environment ownership | ✅ available |
 
 ## Development
 
