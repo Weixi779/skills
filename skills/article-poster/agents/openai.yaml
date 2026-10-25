@@ -1,0 +1,4 @@
+interface:
+  display_name: "文章 Poster"
+  short_description: "结合文章意象和站点视觉规范，生成、审阅与接入独立的文章头图"
+  default_prompt: "使用 $article-poster，按本站已确认的 Poster 规范，为这篇文章生成并预览头图。"
