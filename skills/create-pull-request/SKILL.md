@@ -23,16 +23,22 @@ description: Create and publish a GitHub pull request from a Git or Jujutsu (jj)
    - Git: inspect the index, preserve unrelated staging, stage/review only selected content, and commit without bypassing hooks.
    - jj: use an explicit fileset or controlled hunk split and review the resulting revision. Leave remaining WIP in `@`; never append `jj new` or require an empty workspace. Do not use `git commit`, reset, or checkout to finalize jj changes.
    - Re-resolve the publication tip after any split and recheck the entire PR diff.
-8. Run repository-required validation. Write the title/body from the reviewed change set and preserve the PR template. Accurately report anything not run.
+8. Check whether the publication head's fork point is substantially behind the freshly fetched base, using the commit graph and intervening changes rather than commit age alone. When it is, attempt to transplant the isolated PR commits onto that base before validation:
+   - Establish the exact old boundary and review every commit in `<old-boundary>..<publication-tip>`. Do not blindly use the merge base when that range includes unrelated or already-merged history. If the intended replay range remains ambiguous, resolve that ambiguity before rebasing.
+   - Record the original tip, remote head, and recoverable WIP/index state. For Git, use `git rebase --onto <fetched-base-sha> <old-boundary> <publication-branch>` in a suitable checkout, preserving unrelated WIP. This updates the PR head's baseline; it does not rewrite the destination branch.
+   - For jj, use the installed jj rebase equivalent with an explicit revision set and destination, never Git rebase in a jj workspace. Inspect descendant effects; a second jj workspace does not isolate shared history. Isolate the PR history if unrelated changes would otherwise be rewritten.
+   - Do not overwrite published history implicitly. If updating an existing remote head would require a non-fast-forward push, retain it and use a distinct scoped publication branch/bookmark for the new PR, or obtain explicit authorization to rewrite that head. Recheck for an existing PR if the publication identity changes.
+   - Resolve conflicts only within the reviewed PR scope; stop for a concrete semantic decision when needed. Re-resolve the tip and inspect the resulting graph, range-diff where applicable, complete PR diff, and remaining WIP before continuing. Do not publish unresolved conflicts or silently drop intended changes.
+9. Run repository-required validation. Write the title/body from the reviewed change set and preserve the PR template. Accurately report anything not run.
 
 ## Publish only the selected head
 
-9. Record the current remote head before changing it. A new PR request does not authorize overwriting divergent published history.
+10. Record the current remote head before changing it; if already recorded before rebase, compare against that SHA and inspect any concurrent movement. A new PR request does not authorize overwriting divergent published history.
    - Git: push only the resolved head branch to the selected remote without force.
    - jj: create/set only the intended bookmark at the reviewed revision within this PR's scope. Verify installed command syntax and use a scoped dry run, then push the exact bookmark, for example `jj git push --remote <remote> --bookmark 'exact:<name>' --dry-run`, followed by the same command without `--dry-run`. Inspect the proposal for unexpected updates/deletions or a non-fast-forward replacement; do not authorize those implicitly.
    - Never use a bare/broad jj push, `--all`, `--tracked`, or bypass empty-description/private-commit safeguards to make an incorrect target pushable. A bookmark excludes descendants but includes all its ancestors; confirm no unrelated WIP is included.
-10. Create a draft PR assigned to `@me`, explicitly passing the base and head instead of relying on CLI branch inference. Use structured arguments or a body file for multiline text. Verify its URL, repository, base, head SHA, assignee, and draft status. Attach the created PR to the chat when that capability is available.
-11. Verify remaining WIP content is preserved and only intended refs moved. Report the published commit, branch/bookmark, PR URL, and validation results. Pushing does not require moving `@` or creating another working change.
+11. Create a draft PR assigned to `@me`, explicitly passing the base and head instead of relying on CLI branch inference. Use structured arguments or a body file for multiline text. Verify its URL, repository, base, head SHA, assignee, and draft status. Attach the created PR to the chat when that capability is available.
+12. Verify remaining WIP content is preserved and only intended refs moved. Report the published commit, branch/bookmark, PR URL, and validation results. Pushing does not require moving `@` or creating another working change.
 
 ## Rules
 
