@@ -64,8 +64,11 @@ npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
 
 `ryugi-visual-docs` provides focused instructions for UI artboards, interactive
 HTML previews, and commentable documents. It uses an existing Ryugi artifacts
-runtime; installing this skill does not install that runtime or disable the
-original Ryugi plugin and its skills.
+runtime directly, without requiring the original Ryugi plugin or its hooks.
+Installing this skill does not install the runtime. The local runtime entry is
+`$HOME/Develop/.visual-docs/runtime/dist/cli.cjs`; see the reference below for
+setup details. Feedback is read through the CLI, not automatically delivered
+by plugin hooks.
 
 The skill does not introduce brainstorming, implementation, TDD, worktree,
 review, or commit workflows. Choices and acceptance controls are optional;

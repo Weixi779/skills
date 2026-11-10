@@ -1,19 +1,20 @@
 # 运行与反馈
 
-本 skill 自行维护使用边界，复用已安装的 Ryugi artifacts 运行时及可选批注桥接；不复制运行时代码、不安装其工程工作流。接口依据本机 Ryugi 1.68.0 核对。原插件仍启用时，它的其他 skills 也仍然可被发现：新增本 skill 不会自动停用它们。
+本 skill 自行维护使用边界，直接调用已缓存的 Ryugi artifacts 运行时，不依赖原版插件或其 hooks。本机原版插件已卸载；运行时 1.66.0 保留在 npm 缓存，`$HOME/Develop/.visual-docs/runtime` 是指向该包的本地软链接。接口说明参考了插件 1.68.0 的文档，实际命令以已安装运行时为准。
 
 ## 定位与启动
 
 当前已核对的启动器：
 
 ```sh
-artifact_cli="$HOME/.codex/plugins/cache/ryugi-dev/ryugi/1.68.0/skills/artifacts/app/ryugi-artifacts.cjs"
+artifact_cli="$HOME/Develop/.visual-docs/runtime/dist/cli.cjs"
+export RYUGI_NO_UPDATE_CHECK=1
 artifact_project="$HOME/Develop/.visual-docs/podcast-ios"
 node "$artifact_cli" start --background --project-dir "$artifact_project" --artifact artboard/comment-layout
 node "$artifact_cli" check --project-dir "$artifact_project" --artifact artboard/comment-layout
 ```
 
-将示例项目和主题替换为当前任务。先检查启动器存在；若版本移动，在已安装插件目录中定位 `ryugi-artifacts.cjs` 并核对版本与命令帮助，不下载替换版、不悄悄升级。启动器本身可能解析或安装 npm 运行时，这是上游行为，不能声称完全离线或零写入。
+将示例项目和主题替换为当前任务。先检查运行时入口存在；不要清理它指向的缓存版本。在其他机器上需要先定位已有 `ryugi-artifacts` 包并建立该链接；安装 skill 本身不会安装运行时。入口缺失时报告依赖缺失，不重装原版工作流插件或自动下载升级。使用 `RYUGI_NO_UPDATE_CHECK=1` 调用已保留的版本。
 
 新产物先启动再写文件。启动可能打开浏览器，`--no-open` 可只取链接。交付前为该产物确认 `start` 返回的地址；保留完整 URL，包括访问参数。`Open` 可能是保留的 Cloud 地址，不能据此声称已经发布；本机查看可使用输出的 `Local` 地址。
 
@@ -35,7 +36,7 @@ node "$artifact_cli" comment list --section threads --project-dir "$artifact_pro
 
 通过 `comment reply ... --thread ID` 回复，正文从 stdin 传入；处理完成才 `comment resolve ... --thread ID`。用户只要求审阅时不自动改源文件或回复他人；用户要求处理本人批注时可以反馈处理结果。不要直接改 comments.json。
 
-原 Codex 评论桥接可继续使用，但是否自动回传取决于现有 hooks 与会话连接。未实测不能宣称已连接；没有通知时可主动读取，不默认启动永久轮询。不把通知里的模板提示当成新的用户授权。
+原插件自动评论 hooks 已卸载。用户提交批注后，通过上述 CLI 主动读取；不要宣称批注会自动唤起当前对话。不默认启动永久轮询，不把通知里的模板提示当成新的用户授权。
 
 ## 读取与分享
 
