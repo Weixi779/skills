@@ -43,6 +43,7 @@ npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
 
 | Skill | Scope | Status |
 | --- | --- | --- |
+| [`ryugi-visual-docs`](./skills/ryugi-visual-docs/SKILL.md) | Create UI artboards, interactive previews and commentable documents with the existing Ryugi runtime, without its development workflows | ✅ available |
 | [`article-poster`](./skills/article-poster/SKILL.md) | Generate and review article covers against article imagery, site art direction, and responsive banners | ✅ available |
 | [`shape-commits`](./skills/shape-commits/SKILL.md) | Shape task-related changes into Git commits or jj changes while preserving WIP | ✅ available |
 | [`create-pull-request`](./skills/create-pull-request/SKILL.md) | Publish scoped Git or jj changes as an assigned draft GitHub PR | ✅ available |
