@@ -1,0 +1,4 @@
+interface:
+  display_name: "iOS Simulator"
+  short_description: "Run iOS Simulator workflows with devicectl and simctl"
+  default_prompt: "用 $ios-simulator 在指定模拟器上打开这个页面并截图。"

@@ -29,6 +29,7 @@ Install a specific skill globally for an agent:
 ```sh
 npx skills add Weixi779/skills --skill ryugi-visual-docs -g -a codex
 npx skills add Weixi779/skills --skill article-poster -g -a codex
+npx skills add Weixi779/skills --skill ios-simulator -g -a codex
 npx skills add Weixi779/skills --skill swiftui-style -g -a codex
 npx skills add Weixi779/skills --skill uikit-style-principles -g -a codex
 npx skills add Weixi779/skills --skill uikit-view-style -g -a codex
@@ -48,6 +49,7 @@ npx skills add Weixi779/skills --skill maintain-pull-request -g -a codex
 | --- | --- | --- |
 | [`ryugi-visual-docs`](./skills/ryugi-visual-docs/SKILL.md) | Create UI artboards, interactive previews and commentable documents with the existing Ryugi runtime, without its development workflows | ✅ available |
 | [`article-poster`](./skills/article-poster/SKILL.md) | Generate and review article covers against article imagery, site art direction, and responsive banners | ✅ available |
+| [`ios-simulator`](./skills/ios-simulator/SKILL.md) | Operate iOS simulators with devicectl and simctl, and use Xcode’s device-interaction skill for UI gestures | ✅ available |
 | [`shape-commits`](./skills/shape-commits/SKILL.md) | Shape task-related changes into Git commits or jj changes while preserving WIP | ✅ available |
 | [`create-pull-request`](./skills/create-pull-request/SKILL.md) | Publish scoped Git or jj changes as an assigned draft GitHub PR | ✅ available |
 | [`maintain-pull-request`](./skills/maintain-pull-request/SKILL.md) | Maintain existing GitHub PRs with Git or jj while preserving WIP | ✅ available |
